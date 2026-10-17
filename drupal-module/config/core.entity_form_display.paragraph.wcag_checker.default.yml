@@ -1,0 +1,25 @@
+uuid: 1860540a-78f3-463f-a1fc-f67d8b235487
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.wcag_checker.field_wcag_label
+    - paragraphs.paragraphs_type.wcag_checker
+_core:
+  default_config_hash: CoXQxyBWOpa3WtLp2N5al0X-41vOcbEsSVw-fG9ItvA
+id: paragraph.wcag_checker.default
+targetEntityType: paragraph
+bundle: wcag_checker
+mode: default
+content:
+  field_wcag_label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: 'e.g. Accessibility Audit Tool'
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

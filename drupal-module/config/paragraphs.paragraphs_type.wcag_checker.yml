@@ -1,0 +1,12 @@
+uuid: adbf1862-fdae-429f-8a88-b25f8d15d29c
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 4ZYME25vkJoEj9aTVjzYx--Al4HO5qbtY1y2L72tVic
+id: wcag_checker
+label: 'WCAG / Section 508 Checker'
+icon_uuid: null
+icon_default: null
+description: 'Interactive accessibility auditor. Scan any public URL or paste inspect-panel HTML to check WCAG 2.1 AA and Section 508 compliance via Playwright and axe-core.'
+behavior_plugins: {  }

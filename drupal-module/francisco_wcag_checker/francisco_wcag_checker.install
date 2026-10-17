@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Registers the wcag_checker paragraph type on field_components on install.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function francisco_wcag_checker_install() {
+  $content_types = ['landing_page', 'earthquake_project', 'iss_tracker', 'nasa_videos', 'gallery_api'];
+
+  foreach ($content_types as $ct) {
+    $config_name = "field.field.node.{$ct}.field_components";
+    $config = \Drupal::configFactory()->getEditable($config_name);
+    if ($config->isNew()) {
+      continue;
+    }
+
+    $settings = $config->get('settings');
+    $settings['handler_settings']['target_bundles']['wcag_checker'] = 'wcag_checker';
+    $settings['handler_settings']['target_bundles_drag_drop']['wcag_checker'] = [
+      'weight' => 22,
+      'enabled' => TRUE,
+    ];
+    $config->set('settings', $settings)->save();
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function francisco_wcag_checker_uninstall() {
+  $content_types = ['landing_page', 'earthquake_project', 'iss_tracker', 'nasa_videos', 'gallery_api'];
+
+  foreach ($content_types as $ct) {
+    $config_name = "field.field.node.{$ct}.field_components";
+    $config = \Drupal::configFactory()->getEditable($config_name);
+    if ($config->isNew()) {
+      continue;
+    }
+
+    $settings = $config->get('settings');
+    unset($settings['handler_settings']['target_bundles']['wcag_checker']);
+    unset($settings['handler_settings']['target_bundles_drag_drop']['wcag_checker']);
+    $config->set('settings', $settings)->save();
+  }
+}

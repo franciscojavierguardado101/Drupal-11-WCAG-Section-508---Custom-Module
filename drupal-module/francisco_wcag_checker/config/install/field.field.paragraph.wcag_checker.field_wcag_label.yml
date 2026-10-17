@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_wcag_label
+    - paragraphs.paragraphs_type.wcag_checker
+id: paragraph.wcag_checker.field_wcag_label
+field_name: field_wcag_label
+entity_type: paragraph
+bundle: wcag_checker
+label: 'Section Heading'
+description: 'Optional heading shown above the accessibility checker tool.'
+required: false
+translatable: true
+default_value: {}
+default_value_callback: ''
+settings: {}
+field_type: string

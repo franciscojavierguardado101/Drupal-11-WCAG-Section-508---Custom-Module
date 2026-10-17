@@ -1,0 +1,21 @@
+uuid: 2226ac9c-9245-4841-b7b9-ed747b646a62
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_wcag_label
+    - paragraphs.paragraphs_type.wcag_checker
+_core:
+  default_config_hash: 4g2rjdFmTgDtOXIy7WbsafAdBA-49CgkdVLQdGcEUQc
+id: paragraph.wcag_checker.field_wcag_label
+field_name: field_wcag_label
+entity_type: paragraph
+bundle: wcag_checker
+label: 'Section Heading'
+description: 'Optional heading shown above the accessibility checker tool.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

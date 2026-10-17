@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.wcag_checker.field_wcag_label
+    - paragraphs.paragraphs_type.wcag_checker
+id: paragraph.wcag_checker.default
+targetEntityType: paragraph
+bundle: wcag_checker
+mode: default
+content:
+  field_wcag_label:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {}
+    weight: 0
+    region: content
+hidden: {}

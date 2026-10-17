@@ -1,0 +1,8 @@
+name: 'Francisco WCAG / Section 508 Checker'
+type: module
+description: 'Paragraph component that scans any public URL or pasted HTML for WCAG 2.1 AA and Section 508 compliance using Playwright and axe-core in the Next.js frontend. No Drupal REST endpoint is required — all scanning runs server-side in Node.js.'
+core_version_requirement: ^10 || ^11
+package: Custom
+dependencies:
+  - drupal:paragraphs
+  - entity_reference_revisions:entity_reference_revisions

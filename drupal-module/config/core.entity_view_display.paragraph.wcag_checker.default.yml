@@ -1,0 +1,24 @@
+uuid: 8d0297be-70ba-44d7-87d9-4207560eb46e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.wcag_checker.field_wcag_label
+    - paragraphs.paragraphs_type.wcag_checker
+_core:
+  default_config_hash: Uxp3AT_OjdQeQETkNf9jRJ6FiIvaw7D1SXKQnet0thY
+id: paragraph.wcag_checker.default
+targetEntityType: paragraph
+bundle: wcag_checker
+mode: default
+content:
+  field_wcag_label:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

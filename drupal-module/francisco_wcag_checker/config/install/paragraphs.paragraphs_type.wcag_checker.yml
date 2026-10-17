@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: wcag_checker
+label: 'WCAG / Section 508 Checker'
+description: 'Interactive accessibility auditor. Scan any public URL or paste inspect-panel HTML to check WCAG 2.1 AA and Section 508 compliance via Playwright and axe-core.'
+icon_uuid: null
+icon_default_paragraph_type: false
+behavior_plugins: {}
