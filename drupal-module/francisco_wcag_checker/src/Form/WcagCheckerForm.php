@@ -34,46 +34,68 @@ class WcagCheckerForm extends FormBase {
     $form['#attributes']['class'][]   = 'wcag-checker-form';
     $form['#attributes']['novalidate'] = TRUE;
 
+    // ── Subtitle ──────────────────────────────────────────────────────────────
+    $form['subtitle'] = [
+      '#type'       => 'html_tag',
+      '#tag'        => 'p',
+      '#value'      => $this->t('Powered by axe-core &nbsp;·&nbsp; WCAG 2.1 AA / Section 508 &nbsp;·&nbsp; ~57% automated coverage'),
+      '#attributes' => ['class' => ['wcag-subtitle']],
+    ];
+
     // ── Mode tabs ─────────────────────────────────────────────────────────────
     $form['tabs'] = [
       '#type'       => 'container',
       '#attributes' => ['class' => ['wcag-tabs'], 'role' => 'tablist'],
     ];
     $form['tabs']['url_tab'] = [
-      '#markup' => '<button type="button" class="wcag-tab wcag-tab--active" '
-        . 'data-mode="url" role="tab" aria-selected="true" '
-        . 'aria-controls="wcag-panel-url">'
-        . $this->t('URL Scanner')
-        . '</button>',
+      '#type'       => 'html_tag',
+      '#tag'        => 'button',
+      '#value'      => $this->t('URL Scanner'),
+      '#attributes' => [
+        'type'          => 'button',
+        'class'         => ['wcag-tab', 'wcag-tab--active'],
+        'data-mode'     => 'url',
+        'role'          => 'tab',
+        'aria-selected' => 'true',
+        'aria-controls' => 'wcag-panel-url',
+      ],
     ];
     $form['tabs']['html_tab'] = [
-      '#markup' => '<button type="button" class="wcag-tab" '
-        . 'data-mode="html" role="tab" aria-selected="false" '
-        . 'aria-controls="wcag-panel-html">'
-        . $this->t('HTML Inspector')
-        . '</button>',
+      '#type'       => 'html_tag',
+      '#tag'        => 'button',
+      '#value'      => $this->t('HTML Inspector'),
+      '#attributes' => [
+        'type'          => 'button',
+        'class'         => ['wcag-tab'],
+        'data-mode'     => 'html',
+        'role'          => 'tab',
+        'aria-selected' => 'false',
+        'aria-controls' => 'wcag-panel-html',
+      ],
     ];
 
     // ── URL panel ─────────────────────────────────────────────────────────────
     $form['url_panel'] = [
       '#type'       => 'container',
       '#attributes' => [
-        'id'         => 'wcag-panel-url',
-        'class'      => ['wcag-panel'],
-        'role'       => 'tabpanel',
+        'id'              => 'wcag-panel-url',
+        'class'           => ['wcag-panel'],
+        'role'            => 'tabpanel',
         'aria-labelledby' => 'wcag-tab-url',
       ],
     ];
-    $form['url_panel']['url'] = [
+    $form['url_panel']['url_row'] = [
+      '#type'       => 'container',
+      '#attributes' => ['class' => ['wcag-url-row']],
+    ];
+    $form['url_panel']['url_row']['url'] = [
       '#type'        => 'url',
-      '#title'       => $this->t('Public URL'),
+      '#title'       => $this->t('PUBLIC URL — paste any publicly accessible webpage'),
       '#placeholder' => 'https://example.com/page',
       '#attributes'  => ['class' => ['wcag-input'], 'id' => 'wcag-url-input'],
-      '#description' => $this->t(
-        'Any publicly accessible URL. The server fetches the HTML — JavaScript-rendered pages (React, Vue, Next.js) should use the HTML Inspector tab instead.'
-      ),
+      '#description' => $this->t('Only http:// and https:// URLs. Localhost and private networks are blocked.'),
     ];
-    $form['url_panel']['url_submit'] = [
+    $form['url_panel']['url_row']['url_submit'] = [
       '#type'       => 'button',
       '#value'      => $this->t('Scan URL →'),
       '#attributes' => [
@@ -86,34 +108,32 @@ class WcagCheckerForm extends FormBase {
     $form['html_panel'] = [
       '#type'       => 'container',
       '#attributes' => [
-        'id'         => 'wcag-panel-html',
-        'class'      => ['wcag-panel', 'wcag-panel--hidden'],
-        'role'       => 'tabpanel',
+        'id'              => 'wcag-panel-html',
+        'class'           => ['wcag-panel', 'wcag-panel--hidden'],
+        'role'            => 'tabpanel',
         'aria-labelledby' => 'wcag-tab-html',
       ],
     ];
     $form['html_panel']['html'] = [
       '#type'        => 'textarea',
-      '#title'       => $this->t('HTML'),
-      '#rows'        => 10,
-      '#placeholder' => "<section>\n  <h1>Page title</h1>\n  <img src=\"hero.jpg\" alt=\"\" />\n</section>",
+      '#title'       => $this->t('HTML — paste from browser Inspect panel (right-click → Inspect, copy any element or the full &lt;body&gt;)'),
+      '#rows'        => 8,
+      '#placeholder' => "<section>\n  <h1>Page Title</h1>\n  <img src=\"hero.jpg\" />\n</section>",
       '#attributes'  => [
         'class' => ['wcag-input', 'wcag-textarea'],
         'id'    => 'wcag-html-input',
       ],
-      '#description' => $this->t(
-        'Paste from your browser\'s Inspect panel (right-click any element → Inspect → copy outer HTML). This captures the rendered DOM including JavaScript changes.'
-      ),
     ];
     $form['html_panel']['css'] = [
       '#type'        => 'textarea',
-      '#title'       => $this->t('CSS (optional — enables color contrast evaluation)'),
+      '#title'       => $this->t('CSS (optional but recommended — enables color contrast checks)'),
       '#rows'        => 4,
-      '#placeholder' => "body { background: #fff; color: #111; }\na { color: #0000ee; }",
+      '#placeholder' => "/* paste your stylesheet or relevant rules */\nbody { background: #fff; color: #111; }",
       '#attributes'  => [
         'class' => ['wcag-input', 'wcag-textarea'],
         'id'    => 'wcag-css-input',
       ],
+      '#description' => $this->t('Without CSS, color contrast checks are skipped. Fragments are automatically wrapped in a valid HTML document.'),
     ];
     $form['html_panel']['html_submit'] = [
       '#type'       => 'button',
@@ -128,9 +148,9 @@ class WcagCheckerForm extends FormBase {
     $form['results'] = [
       '#type'       => 'container',
       '#attributes' => [
-        'id'         => 'wcag-results',
-        'class'      => ['wcag-results'],
-        'aria-live'  => 'polite',
+        'id'          => 'wcag-results',
+        'class'       => ['wcag-results'],
+        'aria-live'   => 'polite',
         'aria-atomic' => 'true',
       ],
     ];

@@ -8,6 +8,41 @@
   color: #fff;
 }
 
+/* ── Heading (paragraph context) ─────────────────────────────────────────── */
+.wcag-checker-heading {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin: 0 0 4px;
+  line-height: 1.2;
+}
+
+/* ── Subtitle ─────────────────────────────────────────────────────────────── */
+.wcag-subtitle {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.35);
+  margin: 0 0 28px;
+}
+
+/* ── URL row (input + button side by side) ────────────────────────────────── */
+.wcag-url-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.wcag-url-row .form-item {
+  flex: 1;
+  min-width: 280px;
+  margin-bottom: 0;
+}
+
+.wcag-url-row .wcag-btn {
+  margin-top: 24px; /* aligns with input below its label */
+  flex-shrink: 0;
+}
+
 /* ── Tabs ─────────────────────────────────────────────────────────────────── */
 .wcag-tabs {
   display: flex;
