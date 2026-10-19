@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * WCAG / Section 508 Accessibility Checker module hooks.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function francisco_wcag_checker_theme(): array {
+  return [
+    'paragraph__wcag_checker' => [
+      'base hook' => 'paragraph',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for wcag_checker bundle.
+ */
+function francisco_wcag_checker_preprocess_paragraph__wcag_checker(array &$variables): void {
+  $variables['wcag_form'] = \Drupal::formBuilder()
+    ->getForm('Drupal\francisco_wcag_checker\Form\WcagCheckerForm');
+}
