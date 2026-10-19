@@ -1,0 +1,6 @@
+francisco_wcag_checker.page:
+  title: 'WCAG / Section 508 Checker'
+  description: 'Scan any URL or HTML for WCAG 2.1 AA and Section 508 accessibility issues.'
+  route_name: francisco_wcag_checker.page
+  menu_name: tools
+  weight: 50

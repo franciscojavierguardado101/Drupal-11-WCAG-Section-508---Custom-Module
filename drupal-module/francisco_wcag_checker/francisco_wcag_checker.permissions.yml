@@ -1,0 +1,4 @@
+use wcag checker:
+  title: 'Use WCAG / Section 508 accessibility checker'
+  description: 'Allows access to the scanner form and URL proxy endpoint.'
+  restrict access: false

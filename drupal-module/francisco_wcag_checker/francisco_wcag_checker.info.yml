@@ -1,8 +1,8 @@
-name: 'Francisco WCAG / Section 508 Checker'
+name: 'WCAG / Section 508 Accessibility Checker'
 type: module
-description: 'Paragraph component that scans any public URL or pasted HTML for WCAG 2.1 AA and Section 508 compliance using Playwright and axe-core in the Next.js frontend. No Drupal REST endpoint is required — all scanning runs server-side in Node.js.'
+description: 'WCAG 2.1 AA and Section 508 accessibility scanner. Provides a standalone admin form (axe-core + sandboxed iframe) for any Drupal site, and a paragraph component for headless Next.js setups using Playwright.'
 core_version_requirement: ^10 || ^11
-package: Custom
+package: Accessibility
 dependencies:
   - drupal:paragraphs
   - entity_reference_revisions:entity_reference_revisions

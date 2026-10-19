@@ -1,0 +1,15 @@
+francisco_wcag_checker.page:
+  path: '/wcag-checker'
+  defaults:
+    _form: '\Drupal\francisco_wcag_checker\Form\WcagCheckerForm'
+    _title: 'WCAG / Section 508 Accessibility Checker'
+  requirements:
+    _permission: 'use wcag checker'
+
+francisco_wcag_checker.proxy:
+  path: '/wcag-checker/proxy'
+  defaults:
+    _controller: '\Drupal\francisco_wcag_checker\Controller\WcagProxyController::proxy'
+  requirements:
+    _permission: 'use wcag checker'
+  methods: [POST]

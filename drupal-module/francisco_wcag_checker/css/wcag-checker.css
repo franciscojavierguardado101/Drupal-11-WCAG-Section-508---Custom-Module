@@ -1,0 +1,508 @@
+/* WCAG / Section 508 Checker — dark theme matching the Next.js component */
+
+/* ── Page wrapper ─────────────────────────────────────────────────────────── */
+.wcag-checker-form {
+  max-width: 900px;
+  margin: 40px auto;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #fff;
+}
+
+/* ── Tabs ─────────────────────────────────────────────────────────────────── */
+.wcag-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 24px;
+}
+
+.wcag-tab {
+  padding: 10px 22px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: rgba(255,255,255,0.38);
+  font-size: 0.85rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-bottom: -1px;
+}
+
+.wcag-tab--active,
+.wcag-tab:hover {
+  color: #8b5cf6;
+  border-bottom-color: #8b5cf6;
+  font-weight: 600;
+}
+
+/* ── Panels ───────────────────────────────────────────────────────────────── */
+.wcag-panel {
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.wcag-panel--hidden {
+  display: none;
+}
+
+/* ── Inputs ───────────────────────────────────────────────────────────────── */
+.wcag-checker-form label {
+  display: block;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.wcag-input {
+  width: 100%;
+  background: #0d0d0d;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 5px;
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 10px 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+  font-family: inherit;
+}
+
+.wcag-input:focus {
+  border-color: #8b5cf6;
+}
+
+.wcag-textarea {
+  resize: vertical;
+  line-height: 1.5;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+}
+
+.form-item {
+  margin-bottom: 18px;
+}
+
+.description {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.22);
+  margin-top: 5px;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.wcag-btn {
+  padding: 10px 28px;
+  border-radius: 5px;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.03em;
+}
+
+.wcag-btn--primary {
+  background: #8b5cf6;
+  color: #fff;
+  margin-top: 8px;
+}
+
+.wcag-btn--primary:hover {
+  background: #7c3aed;
+}
+
+/* ── Loading ──────────────────────────────────────────────────────────────── */
+.wcag-scanning {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 0;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.875rem;
+}
+
+.wcag-spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.08);
+  border-top-color: #8b5cf6;
+  animation: wcag-spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes wcag-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Error ────────────────────────────────────────────────────────────────── */
+.wcag-error {
+  padding: 14px 18px;
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: 6px;
+  color: #fca5a5;
+  font-size: 0.85rem;
+}
+
+/* ── Results header ───────────────────────────────────────────────────────── */
+.wcag-results-inner {
+  margin-top: 8px;
+}
+
+.wcag-results-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.wcag-results-title {
+  font-size: 1rem;
+  color: #fff;
+  margin: 0 0 4px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.wcag-results-meta {
+  margin: 0;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.38);
+}
+
+.wcag-scanned-url {
+  color: rgba(255,255,255,0.6);
+}
+
+.wcag-dl-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.wcag-dl-btn {
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: transparent;
+  color: rgba(255,255,255,0.38);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.wcag-dl-btn:hover {
+  border-color: #8b5cf6;
+  color: #8b5cf6;
+}
+
+/* ── Summary bar ──────────────────────────────────────────────────────────── */
+.wcag-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 20px;
+  background: #0d0d0d;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  margin-bottom: 24px;
+}
+
+.wcag-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.wcag-badge--critical {
+  color: #ef4444;
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.26);
+}
+.wcag-badge--serious {
+  color: #f97316;
+  background: rgba(249,115,22,0.12);
+  border: 1px solid rgba(249,115,22,0.26);
+}
+.wcag-badge--moderate {
+  color: #eab308;
+  background: rgba(234,179,8,0.12);
+  border: 1px solid rgba(234,179,8,0.26);
+}
+.wcag-badge--minor {
+  color: #94a3b8;
+  background: rgba(148,163,184,0.10);
+  border: 1px solid rgba(148,163,184,0.22);
+}
+.wcag-badge--review {
+  color: #94a3b8;
+  background: rgba(148,163,184,0.08);
+  border: 1px solid rgba(148,163,184,0.25);
+}
+.wcag-badge--pass {
+  color: #22c55e;
+  background: rgba(34,197,94,0.08);
+  border: 1px solid rgba(34,197,94,0.25);
+}
+
+/* ── No violations ────────────────────────────────────────────────────────── */
+.wcag-no-violations {
+  padding: 20px 24px;
+  background: rgba(34,197,94,0.07);
+  border: 1px solid rgba(34,197,94,0.2);
+  border-radius: 6px;
+  color: #86efac;
+  font-size: 0.875rem;
+  margin-bottom: 24px;
+}
+
+/* ── Section headings ─────────────────────────────────────────────────────── */
+.wcag-section {
+  margin-bottom: 32px;
+}
+
+.wcag-section-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+
+.wcag-section-label--review {
+  color: #94a3b8;
+}
+
+/* ── Violation cards ──────────────────────────────────────────────────────── */
+.wcag-card {
+  border-left: 3px solid rgba(255,255,255,0.15);
+  background: #111;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.wcag-card--review {
+  border-left-color: #94a3b8;
+}
+
+.wcag-card-summary {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.wcag-card-summary::-webkit-details-marker { display: none; }
+
+.wcag-card[open] > .wcag-card-summary::before {
+  content: '▲';
+  float: right;
+  color: rgba(255,255,255,0.38);
+  font-size: 0.75rem;
+}
+.wcag-card:not([open]) > .wcag-card-summary::before {
+  content: '▼';
+  float: right;
+  color: rgba(255,255,255,0.38);
+  font-size: 0.75rem;
+}
+
+.wcag-idx {
+  color: rgba(255,255,255,0.38);
+  font-size: 0.72rem;
+  padding-top: 2px;
+  min-width: 20px;
+  flex-shrink: 0;
+}
+
+.wcag-impact {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.wcag-impact--critical { color: #ef4444; background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.27); }
+.wcag-impact--serious  { color: #f97316; background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.27); }
+.wcag-impact--moderate { color: #eab308; background: rgba(234,179,8,0.12);  border: 1px solid rgba(234,179,8,0.27); }
+.wcag-impact--minor    { color: #94a3b8; background: rgba(148,163,184,0.10); border: 1px solid rgba(148,163,184,0.22); }
+
+.wcag-rule-id {
+  color: #a78bfa;
+  font-family: 'Courier New', monospace;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+.wcag-rule-id--pass {
+  color: #4ade80;
+}
+
+.wcag-criterion {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.38);
+  font-family: 'Courier New', monospace;
+  flex-shrink: 0;
+}
+
+.wcag-help {
+  font-size: 0.84rem;
+  color: rgba(255,255,255,0.75);
+  flex: 1;
+  min-width: 0;
+}
+
+.wcag-help--muted {
+  color: rgba(255,255,255,0.5);
+}
+
+.wcag-node-count {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.38);
+  white-space: nowrap;
+}
+
+.wcag-docs-link {
+  font-size: 0.72rem;
+  color: #8b5cf6;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(139,92,246,0.35);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.wcag-docs-link:hover {
+  border-bottom-color: #8b5cf6;
+}
+
+/* ── Expanded nodes ───────────────────────────────────────────────────────── */
+.wcag-nodes {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 0 16px 12px 48px;
+}
+
+.wcag-node {
+  margin-top: 12px;
+}
+
+.wcag-selector {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.38);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 4px;
+  word-break: break-all;
+}
+
+.wcag-html {
+  margin: 0;
+  padding: 8px 12px;
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  font-size: 0.72rem;
+  color: #e2e8f0;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-family: 'Courier New', monospace;
+  max-height: 120px;
+}
+
+.wcag-failure {
+  margin: 6px 0 0;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  white-space: pre-line;
+}
+
+/* ── Passed rules ─────────────────────────────────────────────────────────── */
+.wcag-passed-details {
+  margin-bottom: 24px;
+}
+
+.wcag-passed-summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 4px 0;
+}
+
+.wcag-passed-summary::-webkit-details-marker { display: none; }
+
+.wcag-passed-summary h3 {
+  display: inline;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #22c55e;
+  font-weight: 600;
+  margin: 0;
+}
+
+.wcag-passed-list {
+  background: #111;
+  border: 1px solid rgba(34,197,94,0.15);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.wcag-passed-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  flex-wrap: wrap;
+}
+
+.wcag-passed-row:last-child {
+  border-bottom: none;
+}
+
+.wcag-check {
+  color: #22c55e;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* ── Manual review note ───────────────────────────────────────────────────── */
+.wcag-manual-note {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.38);
+  margin: 0 0 12px;
+}
+
+/* ── Disclaimer ───────────────────────────────────────────────────────────── */
+.wcag-disclaimer {
+  padding: 14px 18px;
+  background: rgba(139,92,246,0.08);
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.6;
+  margin-top: 32px;
+}
+
+.wcag-disclaimer strong {
+  color: rgba(255,255,255,0.6);
+}

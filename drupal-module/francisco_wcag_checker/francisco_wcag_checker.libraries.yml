@@ -1,0 +1,11 @@
+wcag_checker:
+  version: 1.x
+  css:
+    theme:
+      css/wcag-checker.css: {}
+  js:
+    js/wcag-checker.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/drupalSettings
